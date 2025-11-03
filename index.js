@@ -1,5 +1,4 @@
 import express from 'express';
-
 import cors from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();  
@@ -10,7 +9,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Import MongoDB connection (db.js)
-import './db.js'; // just import to connect
+import './db.js';
 
 // Import routes
 import packagesRoutes from './routes/packages.js';
@@ -41,11 +40,12 @@ app.use(cors());
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-// Routes
+// Root route
 app.get('/', (req, res) => {
   res.json({ message: 'Server is running' });
 });
 
+// API Routes
 app.use('/api/packages', packagesRoutes);
 app.use('/api/bookingSteps', bookingStepsRoutes);
 app.use('/api/bookings', bookingsRoutes);
@@ -57,6 +57,7 @@ app.use('/api/users', usersRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
+// Travela API Routes
 app.use('/travelaapi/about', travelaAboutRoutes);
 app.use('/travelaapi/services', travelaServiceRoutes);
 app.use('/travelaapi/packages', travelaPackageRoutes);
@@ -73,21 +74,13 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: 'Internal server error' });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
-
-app.get('/', (req, res) => {
-  res.json({ message: 'Server is running' });
-});
-
-import Test from './models/Test.js';
-
-async function createTestData() {
-  const doc = new Test({ name: 'First Entry' });
-  await doc.save();
-  console.log('✅ Document saved, database created!');
+// Start server (only in development)
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+  });
 }
 
-createTestData();
+// Export for Vercel
+export default app;
