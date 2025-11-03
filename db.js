@@ -1,6 +1,8 @@
 // db.js
-const mongoose = require('mongoose');
-require('dotenv').config();
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 // MongoDB connection URI
 const mongoURI = process.env.MONGO_URI || 'mongodb+srv://shemeerafonseka:shemeerafonseka@shemeeracluster.0zhgl.mongodb.net/tourist?retryWrites=true&w=majority&appName=ShemeeraCluster';
@@ -13,4 +15,4 @@ mongoose.connect(mongoURI, {
 .then(() => console.log('✅ Connected to MongoDB'))
 .catch((err) => console.error('❌ Error connecting to MongoDB:', err));
 
-module.exports = mongoose;
+export default mongoose;
