@@ -5,8 +5,14 @@ dotenv.config();
 import path from "path";
 import { fileURLToPath } from 'url';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Use a try-catch to handle both ESM and CommonJS environments
+let __dirname;
+try {
+  const __filename = fileURLToPath(import.meta.url);
+  __dirname = path.dirname(__filename);
+} catch {
+  __dirname = process.cwd();
+}
 
 // Import MongoDB connection (db.js)
 import './db.js';
