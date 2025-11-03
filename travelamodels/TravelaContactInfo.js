@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-
 const TravelaContactInfoSchema = new mongoose.Schema({
   office: { type: String, required: true },
   mobile: { type: String, required: true },

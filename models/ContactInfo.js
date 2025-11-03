@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const ContactInfoSchema = new mongoose.Schema({
   office: { type: String, required: true },
@@ -8,4 +8,4 @@ const ContactInfoSchema = new mongoose.Schema({
   description: { type: String, default: '' }
 }, { timestamps: true });
 
-module.exports = mongoose.model('ContactInfo', ContactInfoSchema);
+export default mongoose.model('ContactInfo', ContactInfoSchema);

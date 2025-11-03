@@ -1,6 +1,5 @@
 // models/Guide.js
-const mongoose = require('mongoose');
-
+import mongoose from 'mongoose';
 const TravelaGuideSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
@@ -10,4 +9,4 @@ const TravelaGuideSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('TravelaGuide', TravelaGuideSchema);
+export default mongoose.model('TravelaGuide', TravelaGuideSchema);

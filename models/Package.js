@@ -1,5 +1,5 @@
 // models/Package.js
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const PackageSchema = new mongoose.Schema(
   {
@@ -14,4 +14,4 @@ const PackageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Package', PackageSchema);
+export default mongoose.model('Package', PackageSchema);

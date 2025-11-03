@@ -1,8 +1,8 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const testSchema = new mongoose.Schema({
   name: String,
   createdAt: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('Test', testSchema);
+export default mongoose.model('Test', testSchema);

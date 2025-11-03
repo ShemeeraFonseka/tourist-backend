@@ -1,6 +1,5 @@
 // models/Package.js
-const mongoose = require('mongoose');
-
+import mongoose from 'mongoose';
 const TravelaPackageSchema = new mongoose.Schema(
   {
     place: { type: String, required: true },
@@ -14,4 +13,4 @@ const TravelaPackageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('TravelaPackage', TravelaPackageSchema);
+export default mongoose.model('TravelaPackage', TravelaPackageSchema);

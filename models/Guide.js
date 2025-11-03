@@ -1,5 +1,5 @@
 // models/Guide.js
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const GuideSchema = new mongoose.Schema(
   {
@@ -10,4 +10,4 @@ const GuideSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model('Guide', GuideSchema);
+export default mongoose.model('Guide', GuideSchema);
